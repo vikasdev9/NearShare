@@ -7,7 +7,8 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.quickdrop.feature.home.presentation.HomeRoute
+import com.example.quickdrop.feature.home.HomeRoute
+import com.example.quickdrop.feature.home.model.CategoryType
 import com.example.quickdrop.feature.onboarding.OnboardingScreen
 import com.example.quickdrop.feature.onboarding.OnboardingViewModel
 import com.example.quickdrop.feature.onboarding.SplashScreen
@@ -60,7 +61,13 @@ fun QuickDropNavHost(
             )
         }
         composable<HomeRouteDestination> {
-            HomeRoute(onTransferClick = { addr -> navController.navigate(TransferRouteData(addr)) })
+            HomeRoute(
+                onSendClick = { /* Handle Send click */ },
+                onReceiveClick = { /* Handle Receive click */ },
+                onCategoryClick = { _ -> /* handle category click */ },
+                onSeeAllClick = { /* handle see all */ },
+                onSettingsClick = { /* handle settings click */ }
+            )
         }
         composable<TransferRouteData> {
             TransferRoute(onBackClick = { navController.popBackStack() })

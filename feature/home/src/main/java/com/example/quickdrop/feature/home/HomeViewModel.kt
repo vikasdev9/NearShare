@@ -1,14 +1,19 @@
 package com.example.quickdrop.feature.home
 
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Apps
-import androidx.compose.material.icons.outlined.Description
-import androidx.compose.material.icons.outlined.Folder
-import androidx.compose.material.icons.outlined.Image
-import androidx.compose.material.icons.outlined.MusicNote
-import androidx.compose.material.icons.outlined.Videocam
-import androidx.compose.ui.graphics.Color
+import androidx.compose.material.icons.rounded.Apps
+import androidx.compose.material.icons.rounded.Description
+import androidx.compose.material.icons.rounded.Folder
+import androidx.compose.material.icons.rounded.Image
+import androidx.compose.material.icons.rounded.MusicNote
+import androidx.compose.material.icons.rounded.Videocam
 import androidx.lifecycle.ViewModel
+import com.example.quickdrop.core.designsystem.theme.GreenTint
+import com.example.quickdrop.core.designsystem.theme.LightBlueTint
+import com.example.quickdrop.core.designsystem.theme.MintTint
+import com.example.quickdrop.core.designsystem.theme.PinkTint
+import com.example.quickdrop.core.designsystem.theme.PurpleTint
+import com.example.quickdrop.core.designsystem.theme.YellowTint
 import com.example.quickdrop.feature.home.model.CategoryItem
 import com.example.quickdrop.feature.home.model.CategoryType
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,7 +30,7 @@ class HomeViewModel @Inject constructor() : ViewModel() {
     val uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()
 
     init {
-        // Initialize with sample data matching the design spec
+        // Initialize with sample data matching the new design spec
         _uiState.value = HomeUiState(
             storageUsedGb = 64.2,
             storageTotalGb = 128.0,
@@ -34,48 +39,48 @@ class HomeViewModel @Inject constructor() : ViewModel() {
                     id = "1",
                     name = "Photos",
                     itemCount = "1,284 items",
-                    icon = Icons.Outlined.Image,
-                    tintColor = Color(0xFF10B981), // Mint/Green
+                    icon = Icons.Rounded.Image,
+                    tintColor = MintTint,
                     type = CategoryType.PHOTOS
                 ),
                 CategoryItem(
                     id = "2",
                     name = "Videos",
                     itemCount = "94 items",
-                    icon = Icons.Outlined.Videocam,
-                    tintColor = Color(0xFF3B82F6), // Blue
+                    icon = Icons.Rounded.Videocam,
+                    tintColor = LightBlueTint,
                     type = CategoryType.VIDEOS
                 ),
                 CategoryItem(
                     id = "3",
                     name = "Music",
                     itemCount = "512 items",
-                    icon = Icons.Outlined.MusicNote,
-                    tintColor = Color(0xFF8B5CF6), // Purple
+                    icon = Icons.Rounded.MusicNote,
+                    tintColor = PurpleTint,
                     type = CategoryType.MUSIC
                 ),
                 CategoryItem(
                     id = "4",
                     name = "Apps",
                     itemCount = "68 items",
-                    icon = Icons.Outlined.Apps,
-                    tintColor = Color(0xFF22C55E), // Light Green
+                    icon = Icons.Rounded.Apps,
+                    tintColor = GreenTint,
                     type = CategoryType.APPS
                 ),
                 CategoryItem(
                     id = "5",
                     name = "Docs",
                     itemCount = "230 items",
-                    icon = Icons.Outlined.Description,
-                    tintColor = Color(0xFFF59E0B), // Amber/Orange
+                    icon = Icons.Rounded.Description,
+                    tintColor = YellowTint,
                     type = CategoryType.DOCS
                 ),
                 CategoryItem(
                     id = "6",
                     name = "Folders",
                     itemCount = "42 items",
-                    icon = Icons.Outlined.Folder,
-                    tintColor = Color(0xFFEF4444), // Coral/Red
+                    icon = Icons.Rounded.Folder,
+                    tintColor = PinkTint,
                     type = CategoryType.FOLDERS
                 )
             )

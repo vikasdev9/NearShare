@@ -16,6 +16,7 @@ jmdns = "3.5.9"
 ktor = "2.3.8"
 sqldelight = "2.0.1"
 javaxInject = "1"
+kotlinxCollectionsImmutable = "0.3.7"
 
 [libraries]
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
@@ -29,6 +30,7 @@ androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", versi
 androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
 androidx-compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-compose-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-core = { group = "com.google.dagger", name = "hilt-core", version.ref = "hilt" }
@@ -56,6 +58,7 @@ ktor-client-cio = { group = "io.ktor", name = "ktor-client-cio", version.ref = "
 sqldelight-jvm-driver = { group = "app.cash.sqldelight", name = "sqlite-driver", version.ref = "sqldelight" }
 sqldelight-coroutines = { group = "app.cash.sqldelight", name = "coroutines-extensions", version.ref = "sqldelight" }
 javax-inject = { group = "javax.inject", name = "javax.inject", version.ref = "javaxInject" }
+kotlinx-collections-immutable = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version.ref = "kotlinxCollectionsImmutable" }
 androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version = "1.2.0" }
 androidx-datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version = "1.1.1" }
 

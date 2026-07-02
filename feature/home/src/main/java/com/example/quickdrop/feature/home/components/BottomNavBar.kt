@@ -2,23 +2,14 @@ package com.example.quickdrop.feature.home.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBarsPadding
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.History
-import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.Person
-import androidx.compose.material.icons.outlined.Wifi
+import androidx.compose.material.icons.rounded.History
+import androidx.compose.material.icons.rounded.Home
+import androidx.compose.material.icons.rounded.Person
+import androidx.compose.material.icons.rounded.Wifi
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -31,7 +22,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.quickdrop.core.designsystem.theme.IndigoPrimary
+import com.example.quickdrop.core.designsystem.theme.ShareItBlueStart
 import com.example.quickdrop.core.designsystem.theme.SlateGray
 
 enum class NavDestination {
@@ -44,43 +35,49 @@ fun BottomNavBar(
     onDestinationClick: (NavDestination) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Surface(
-        color = Color.White,
-        shadowElevation = 8.dp,
+    // Floating look with padding and large rounded corners
+    Box(
         modifier = modifier
             .fillMaxWidth()
+            .padding(horizontal = 24.dp, vertical = 20.dp)
             .navigationBarsPadding()
-            .height(64.dp)
     ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            verticalAlignment = Alignment.CenterVertically
+        Surface(
+            color = Color.White,
+            shape = RoundedCornerShape(32.dp),
+            shadowElevation = 12.dp,
+            modifier = Modifier.fillMaxWidth().height(80.dp)
         ) {
-            NavItem(
-                label = "Home",
-                icon = Icons.Outlined.Home,
-                isSelected = currentDestination == NavDestination.HOME,
-                onClick = { onDestinationClick(NavDestination.HOME) }
-            )
-            NavItem(
-                label = "History",
-                icon = Icons.Outlined.History,
-                isSelected = currentDestination == NavDestination.HISTORY,
-                onClick = { onDestinationClick(NavDestination.HISTORY) }
-            )
-            NavItem(
-                label = "Connect",
-                icon = Icons.Outlined.Wifi,
-                isSelected = currentDestination == NavDestination.CONNECT,
-                onClick = { onDestinationClick(NavDestination.CONNECT) }
-            )
-            NavItem(
-                label = "Profile",
-                icon = Icons.Outlined.Person,
-                isSelected = currentDestination == NavDestination.PROFILE,
-                onClick = { onDestinationClick(NavDestination.PROFILE) }
-            )
+            Row(
+                modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp),
+                horizontalArrangement = Arrangement.SpaceEvenly,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                NavItem(
+                    label = "Home",
+                    icon = Icons.Rounded.Home,
+                    isSelected = currentDestination == NavDestination.HOME,
+                    onClick = { onDestinationClick(NavDestination.HOME) }
+                )
+                NavItem(
+                    label = "History",
+                    icon = Icons.Rounded.History,
+                    isSelected = currentDestination == NavDestination.HISTORY,
+                    onClick = { onDestinationClick(NavDestination.HISTORY) }
+                )
+                NavItem(
+                    label = "Connect",
+                    icon = Icons.Rounded.Wifi,
+                    isSelected = currentDestination == NavDestination.CONNECT,
+                    onClick = { onDestinationClick(NavDestination.CONNECT) }
+                )
+                NavItem(
+                    label = "Profile",
+                    icon = Icons.Rounded.Person,
+                    isSelected = currentDestination == NavDestination.PROFILE,
+                    onClick = { onDestinationClick(NavDestination.PROFILE) }
+                )
+            }
         }
     }
 }
@@ -92,14 +89,13 @@ private fun NavItem(
     isSelected: Boolean,
     onClick: () -> Unit
 ) {
-    val contentColor = if (isSelected) IndigoPrimary else SlateGray
+    val contentColor = if (isSelected) ShareItBlueStart else SlateGray
 
     Box(
         modifier = Modifier
-            .fillMaxHeight()
-            .padding(horizontal = 12.dp)
-            .clip(RoundedCornerShape(12.dp))
-            .clickable(onClick = onClick),
+            .clip(RoundedCornerShape(20.dp))
+            .clickable(onClick = onClick)
+            .padding(vertical = 8.dp, horizontal = 12.dp),
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -108,23 +104,23 @@ private fun NavItem(
         ) {
             Box(
                 modifier = Modifier
-                    .size(36.dp)
+                    .size(40.dp)
                     .clip(CircleShape)
-                    .background(if (isSelected) IndigoPrimary.copy(alpha = 0.1f) else Color.Transparent),
+                    .background(if (isSelected) ShareItBlueStart.copy(alpha = 0.12f) else Color.Transparent),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
                     imageVector = icon,
                     contentDescription = null,
                     tint = contentColor,
-                    modifier = Modifier.size(22.dp)
+                    modifier = Modifier.size(26.dp)
                 )
             }
             Spacer(modifier = Modifier.height(4.dp))
             Text(
                 text = label,
-                fontSize = 11.sp,
-                fontWeight = FontWeight.Medium,
+                fontSize = 12.sp,
+                fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Medium,
                 color = contentColor
             )
         }
