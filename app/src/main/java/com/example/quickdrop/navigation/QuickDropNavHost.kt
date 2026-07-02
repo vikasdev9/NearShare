@@ -1,12 +1,24 @@
 package com.example.quickdrop.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.quickdrop.feature.home.presentation.HomeRoute
+import com.example.quickdrop.feature.onboarding.OnboardingScreen
+import com.example.quickdrop.feature.onboarding.OnboardingViewModel
+import com.example.quickdrop.feature.onboarding.SplashScreen
 import com.example.quickdrop.feature.transfer.presentation.TransferRoute
 import kotlinx.serialization.Serializable
+
+@Serializable
+object SplashRoute
+
+@Serializable
+object OnboardingRoute
 
 @Serializable
 object HomeRouteDestination
@@ -15,9 +27,38 @@ object HomeRouteDestination
 data class TransferRouteData(val deviceAddress: String)
 
 @Composable
-fun QuickDropNavHost() {
+fun QuickDropNavHost(
+    viewModel: OnboardingViewModel = hiltViewModel()
+) {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = HomeRouteDestination) {
+    val hasSeenOnboarding by viewModel.hasSeenOnboarding.collectAsState(initial = null)
+
+    NavHost(navController = navController, startDestination = SplashRoute) {
+        composable<SplashRoute> {
+            SplashScreen(
+                onNavigateNext = {
+                    if (hasSeenOnboarding == true) {
+                        navController.navigate(HomeRouteDestination) {
+                            popUpTo(SplashRoute) { inclusive = true }
+                        }
+                    } else {
+                        navController.navigate(OnboardingRoute) {
+                            popUpTo(SplashRoute) { inclusive = true }
+                        }
+                    }
+                }
+            )
+        }
+        composable<OnboardingRoute> {
+            OnboardingScreen(
+                onComplete = {
+                    viewModel.completeOnboarding()
+                    navController.navigate(HomeRouteDestination) {
+                        popUpTo(OnboardingRoute) { inclusive = true }
+                    }
+                }
+            )
+        }
         composable<HomeRouteDestination> {
             HomeRoute(onTransferClick = { addr -> navController.navigate(TransferRouteData(addr)) })
         }

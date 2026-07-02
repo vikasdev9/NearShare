@@ -1,5 +1,7 @@
+# Build and IDE files
 *.iml
 .gradle
+/build
 /local.properties
 /.idea/caches
 /.idea/libraries
@@ -7,9 +9,70 @@
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
-.DS_Store
-/build
+/.idea/shelf
+/.idea/inspectionProfiles
+/.idea/vcs.xml
+/.idea/deploymentTargetSelector.xml
+*.ipr
+*.iws
+
+# Android Studio / IntelliJ specific
+.idea/
+
+# Gradle
+.gradle/
+build/
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Log files
+*.log
+
+# Android Studio captures folder
 /captures
+
+# External native build artifacts
 .externalNativeBuild
 .cxx
-local.properties
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Kotlin
+/site
+
+# Mobile tools
+.mtj.tmp/
+
+# Package Files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Keystore files
+*.jks
+*.keystore
+*.p12
+*.pem
+
+# Google Services
+google-services.json
+
+# Firebase
+.firebase/
+
+# Generated files
+/app/build/
+/desktopApp/build/
+/core/*/build/
+/feature/*/build/

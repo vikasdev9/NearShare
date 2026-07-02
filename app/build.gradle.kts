@@ -42,8 +42,10 @@ dependencies {
     implementation(project(":feature:filepicker"))
     implementation(project(":feature:history"))
     implementation(project(":feature:settings"))
+    implementation(project(":feature:onboarding"))
 
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(platform(libs.androidx.compose.bom))

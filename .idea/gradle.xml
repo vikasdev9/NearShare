@@ -38,6 +38,7 @@
             <option value="$PROJECT_DIR$/feature/filepicker" />
             <option value="$PROJECT_DIR$/feature/history" />
             <option value="$PROJECT_DIR$/feature/home" />
+            <option value="$PROJECT_DIR$/feature/onboarding" />
             <option value="$PROJECT_DIR$/feature/settings" />
             <option value="$PROJECT_DIR$/feature/transfer" />
           </set>
