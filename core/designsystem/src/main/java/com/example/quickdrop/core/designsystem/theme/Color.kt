@@ -19,13 +19,28 @@ val ShareItTealEnd = Color(0xFF1CA6A2)
 
 val SlateGray = Color(0xFF64748B)
 val TextPrimary = Color(0xFF0F172A)
-val BackgroundLight = Color(0xFFFFFFFF) // Pure White as per spec
+val BackgroundLight = Color(0xFFFFFFFF) // Pure White
 val CardWhite = Color(0xFFFFFFFF)
+val BorderLight = Color(0xFFF2F4F8)
 
-// Category Pastel Tints
-val MintTint = Color(0xFF4ADE80)
-val LightBlueTint = Color(0xFF60A5FA)
-val PurpleTint = Color(0xFFA78BFA)
-val GreenTint = Color(0xFF34D399)
-val YellowTint = Color(0xFFFBBF24)
-val PinkTint = Color(0xFFF472B6)
+// Category & Pastel Tints - Premium 2025
+val PhotosTint = Color(0xFFDDFBF4)
+val VideosTint = Color(0xFFE2EEFF)
+val MusicTint = Color(0xFFF3E8FF)
+val AppsTint = Color(0xFFDCF9E7)
+val DocsTint = Color(0xFFFFF3D8)
+val FoldersTint = Color(0xFFFFE6E6)
+
+val MintTint = PhotosTint
+val LightBlueTint = VideosTint
+val PurpleTint = MusicTint
+val GreenTint = AppsTint
+val YellowTint = DocsTint
+val PinkTint = FoldersTint
+
+// Functional Colors
+val InfoBlue = Color(0xFFE8EEFF)
+val NavSelectedBg = Color(0xFFE8EEFF)
+val NavBorder = Color(0xFFECECEC)
+val StorageTrack = Color(0xFFEDF2F8)
+val SignalGreen = Color(0xFF22C55E)
